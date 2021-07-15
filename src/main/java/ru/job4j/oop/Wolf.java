@@ -5,6 +5,6 @@ public class Wolf {
     }
 
     public void tryEat(Ball ball) {
-
+        System.out.println("Колобок ушел от волка");
     }
 }
