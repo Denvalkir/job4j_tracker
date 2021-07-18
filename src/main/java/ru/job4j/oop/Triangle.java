@@ -42,13 +42,4 @@ public class Triangle {
         }
         return rsl;
     }
-
-    public static void main(String[] args) {
-        Point a = new Point(0, 0);
-        Point b = new Point(4, 0);
-        Point c = new Point(0, 4);
-        Triangle triangle = new Triangle(a, b, c);
-        double rsl = triangle.area();
-        System.out.println(rsl);
-    }
 }
