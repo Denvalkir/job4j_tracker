@@ -10,9 +10,6 @@ public class Profession {
 
     private String birthday;
 
-    public Profession() {
-    }
-
     public Profession(String name, String surname, boolean education, String birthday) {
         this.name = name;
         this.surname = surname;
