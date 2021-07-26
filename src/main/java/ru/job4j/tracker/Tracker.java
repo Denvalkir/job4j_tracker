@@ -2,14 +2,10 @@ package ru.job4j.tracker;
 
 import java.util.Arrays;
 
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.core.IsNull.nullValue;
-import static org.junit.Assert.assertThat;
-
 public class Tracker {
-    private static Item[] items = new Item[100];
+    private Item[] items = new Item[100];
     private int ids = 1;
-    private static int size = 0;
+    private int size = 0;
 
     public Item add(Item item) {
         item.setId(ids++);
@@ -39,7 +35,7 @@ public class Tracker {
         return i != -1 ? items[i] : null;
     }
 
-    private static int indexOf(int id) {
+    private int indexOf(int id) {
         int rsl = -1;
         for (int i = 0; i < size; i++) {
             if (items[i].getId() == id) {
@@ -51,9 +47,9 @@ public class Tracker {
     }
 
     public boolean replace(int id, Item item) {
-        boolean rsl = false;
         int i = indexOf(id);
-        if (i != -1) {
+        boolean rsl = i != -1;
+        if (rsl) {
             item.setId(id);
             items[i] = item;
             rsl = true;
@@ -61,11 +57,11 @@ public class Tracker {
         return rsl;
     }
 
-    public static boolean delete(int id) {
+    public boolean delete(int id) {
         boolean rsl = false;
         int i = indexOf(id);
         if (i != -1) {
-            System.arraycopy(items, i + 1, items, i, items.length - 1 - i);
+            System.arraycopy(items, i + 1, items, i, size - 1 - i);
             rsl = true;
             items[size - 1] = null;
             size--;
