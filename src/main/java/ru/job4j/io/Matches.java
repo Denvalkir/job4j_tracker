@@ -15,7 +15,6 @@ public class Matches {
             if (matches < 3 && matches > 0) {
                 turn = !turn;
                 count = count - matches;
-                /* Остальная логика игры. */
             } else {
                 System.out.println("Вы ошиблись!");
             }
