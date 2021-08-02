@@ -3,7 +3,7 @@ package poly;
 public interface Transport {
     void drive();
 
-    int countPassengers();
+    void passengers(int countPassengers);
 
-    int countFuel(double price);
+    double price(double countRefuel);
 }

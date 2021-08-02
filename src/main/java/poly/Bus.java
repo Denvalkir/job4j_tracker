@@ -1,18 +1,19 @@
 package poly;
 
 public class Bus implements Transport {
+
     @Override
     public void drive() {
 
     }
 
     @Override
-    public int countPassengers() {
-        return 0;
+    public void passengers(int countPassengers) {
+
     }
 
     @Override
-    public int countFuel(double price) {
+    public double price(double countRefuel) {
         return 0;
     }
 }
