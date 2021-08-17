@@ -1,25 +1,27 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
+
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 public class StartUITest {
 
     @Test
     public void whenCreateItem() {
-        Output output = new ConsoleOutput();
+        String nameItem = "Item name";
+        StubOutput output = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "Item name", "1"}
+                new String[] {"0", nameItem, "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(output),
                 new ExitAction()
         };
+
         new StartUI(output).init(in, tracker, actions);
-        assertThat(tracker.findAll()[0].getName(), is("Item name"));
+        assertThat(output.toString(), containsString(nameItem));
     }
 
     @Test
@@ -30,7 +32,7 @@ public class StartUITest {
         int id = 1;
         Output output = new ConsoleOutput();
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(id), "New item name", "1"}
+                new String[] {"0", String.valueOf(id), replacedName, "1"}
         );
         UserAction[] actions = {
                 new ReplaceAction(output),
@@ -60,8 +62,8 @@ public class StartUITest {
     @Test
     public void whenShowAllItem() {
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("Test"));
-        String name = "Test";
+        String nameItem = "Test";
+        Item item = tracker.add(new Item(nameItem));
         Output output = new ConsoleOutput();
         Input in = new StubInput(
                 new String[] {"0", "1"}
@@ -71,7 +73,7 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getName(), is(name));
+        assertThat(tracker.findById(item.getId()).getName(), is(nameItem));
     }
 
     @Test
