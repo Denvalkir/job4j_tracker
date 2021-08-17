@@ -33,7 +33,7 @@ public class StartUITest {
                 new String[] {"0", String.valueOf(id), "New item name", "1"}
         );
         UserAction[] actions = {
-                new ReplaceAction(),
+                new ReplaceAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
@@ -50,7 +50,7 @@ public class StartUITest {
                 new String[] {"0", String.valueOf(id), "1"}
         );
         UserAction[] actions = {
-                new DeleteAction(),
+                new DeleteAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
@@ -67,7 +67,7 @@ public class StartUITest {
                 new String[] {"0", "1"}
         );
         UserAction[] actions = {
-                new ShowAllAction(),
+                new ShowAllAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
@@ -84,7 +84,7 @@ public class StartUITest {
                 new String[] {"0", String.valueOf(id), "1"}
         );
         UserAction[] actions = {
-                new FindByIdAction(),
+                new FindByIdAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
@@ -101,7 +101,7 @@ public class StartUITest {
                 new String[] {"0", findByName, "1"}
         );
         UserAction[] actions = {
-                new FindIByNameAction(),
+                new FindIByNameAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
