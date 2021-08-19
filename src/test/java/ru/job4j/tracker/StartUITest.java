@@ -78,17 +78,16 @@ public class StartUITest {
     public void whenFindItemById() {
         Tracker tracker = new Tracker();
         Item itemTest = tracker.add(new Item("Test"));
-        int idForFind = 1;
         Output output = new ConsoleOutput();
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(idForFind), "1"}
+                new String[] {"0", String.valueOf(itemTest.getId()), "1"}
         );
         UserAction[] actions = {
                 new FindByIdAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(tracker.findById(itemTest.getId()).getId(), is(idForFind));
+        assertThat(tracker.findById(itemTest.getId()).getId(), is(itemTest.getId()));
     }
 
     @Test
