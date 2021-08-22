@@ -69,7 +69,18 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(output.toString(), containsString(itemTest.getName()));
+        String ln = System.lineSeparator();
+        assertThat(output.toString(), is(
+                "Menu." + ln
+                        + "0. Show All Items" + ln
+                        + "1. Exit" + ln
+                        + "=== Show all items ====" + ln
+                        + itemTest + ln
+                        + "Menu." + ln
+                        + "0. Show All Items" + ln
+                        + "1. Exit" + ln
+                )
+        );
     }
 
     @Test
@@ -85,7 +96,18 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(output.toString(), containsString(String.valueOf(itemTest.getId())));
+        String ln = System.lineSeparator();
+        assertThat(output.toString(), is(
+                "Menu." + ln
+                        + "0. Find item by id" + ln
+                        + "1. Exit" + ln
+                        + "=== Find item by id ====" + ln
+                        + itemTest + ln
+                        + "Menu." + ln
+                        + "0. Find item by id" + ln
+                        + "1. Exit" + ln
+                )
+        );
     }
 
     @Test
@@ -101,7 +123,18 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(output.toString(), containsString(itemTest.getName()));
+        String ln = System.lineSeparator();
+        assertThat(output.toString(), is(
+                "Menu." + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit" + ln
+                        + "=== Find items by name ====" + ln
+                        + itemTest + ln
+                        + "Menu." + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit" + ln
+                )
+        );
     }
 
     @Test
